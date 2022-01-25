@@ -6,12 +6,31 @@
  * 3. Déployez sur votre serveur et testez !
  */
 
-$from = '';
-$to = '';
-$message = 'Hello World, sending a simple mail !';
+$from = 'alexis.laroche.02240@gmail.com';
+$to = 'alexis.laroche.02240@gmail.com';
+$message = 'Ceci est le message N°1 il ne comporte pas 70 caractéres mais pas grave
+Ceci est le message N°2 il ne comporte pas 70 caractéres mais pas grave';
+
+$message = wordwrap($message, 70, "\r\n");
+$subject = "test";
+
+$headers = [
+  'From' => 'alexis.laroche.02240@gmail.com',
+    'Cc' => 'alexis.laroche.02240@gmail.com',
+    'Bcc' => 'alexis.laroche.02240@gmail.com',
+];
 // TODO Votre code ici.
 
+if (mail($to, $subject, $message, $headers)) {
+    echo "Message envoyer";
+}
+else {
+    echo "Message non envoyer";
+}
 
+$fileOpen = fopen('mails.txt', 'a');
+
+fwrite($fileOpen, $message.$to."\r\n");
 /**
  * 4. Commentez le code précédent, mais gardez les variables $from et $to
  * 5. Définissez un message long d'au moins 120 caractères au choix.
