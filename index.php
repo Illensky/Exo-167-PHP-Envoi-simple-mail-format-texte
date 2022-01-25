@@ -31,6 +31,8 @@ else {
 $fileOpen = fopen('mails.txt', 'a');
 
 fwrite($fileOpen, $message.$to."\r\n");
+
+fclose($fileOpen);
 /**
  * 4. Commentez le code précédent, mais gardez les variables $from et $to
  * 5. Définissez un message long d'au moins 120 caractères au choix.
